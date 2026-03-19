@@ -1,0 +1,14 @@
+[project]
+name = "discord-always-online"
+version = "0.3.0"
+description = "Mantém status online no Discord simulando atividade do usuário no SO"
+requires-python = ">=3.14"
+dependencies = [
+    "pyautogui>=0.9.54",
+    "psutil>=5.9.0",
+    "python-dotenv>=1.0.0",
+    "croniter>=2.0.0",
+]
+
+[project.scripts]
+keep-alive = "keep_alive.cli:main"

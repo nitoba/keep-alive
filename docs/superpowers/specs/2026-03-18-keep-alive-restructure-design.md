@@ -2,6 +2,8 @@
 
 **Date:** 2026-03-18
 
+**Update:** Nesta mesma data, a exigencia de compatibilidade com `main.py` foi removida. A implementacao final deve usar `python -m keep_alive` e o script `keep-alive` como entradas oficiais.
+
 **Goal**
 
 Reorganizar o projeto em uma estrutura de pacote Python com responsabilidades separadas, preservando o objetivo atual do utilitario: manter o Discord online por simulacao de atividade, com execucao em foreground, background e autostart por sistema operacional.
