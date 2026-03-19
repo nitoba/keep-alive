@@ -3,7 +3,7 @@ import textwrap
 from pathlib import Path
 
 from keep_alive.paths import LOG_FILE, PROJECT_DIR
-from keep_alive.runtime import build_module_command, build_shared_cli_args
+from keep_alive.runtime import build_module_command, build_shared_cli_args, command_hint
 
 LABEL = "com.discord.always-online"
 
@@ -77,7 +77,7 @@ def install(args) -> bool:
     print("   Comandos úteis:")
     print("   launchctl list | grep discord              # ver status")
     print(f"   launchctl unload {plist_file}              # parar")
-    print("   python -m keep_alive logs -f               # ver logs")
+    print(f"   {command_hint()} logs -f                   # ver logs")
     return True
 
 

@@ -2,16 +2,62 @@
 
 Mantém seu status no Discord como online simulando microatividade de mouse e teclado no sistema operacional. Pode rodar em foreground, background e com autostart no sistema.
 
-## Instalação sem clone
+## Instalação sem Python
 
-Você não precisa clonar o repositório.
+Você não precisa clonar o repositório nem instalar Python.
+
+### Opção recomendada: instalador do Release
+
+Instala o binário mais recente em `~/.local/bin/keep-alive`:
+
+```bash
+curl -fsSL https://github.com/nitoba/keep-alive/releases/latest/download/install.sh | bash
+```
+
+Se quiser instalar uma versão específica:
+
+```bash
+curl -fsSL https://github.com/nitoba/keep-alive/releases/latest/download/install.sh | KEEP_ALIVE_VERSION=v0.4.0 bash
+```
+
+Depois disso:
+
+```bash
+keep-alive --help
+keep-alive install --cron comercial
+```
+
+### Opção manual: baixar o binário do Release
+
+Baixe diretamente o asset compatível com seu sistema:
+
+- `keep-alive-linux-x86_64`
+- `keep-alive-macos-arm64`
+- `keep-alive-macos-x86_64`
+
+Depois copie para algum diretório no seu `PATH`, por exemplo:
+
+```bash
+mkdir -p ~/.local/bin
+mv keep-alive-linux ~/.local/bin/keep-alive
+chmod +x ~/.local/bin/keep-alive
+```
+
+Limitações importantes:
+
+- `macOS`: o app ainda depende de permissão de Acessibilidade
+- `Linux`: o app ainda depende de sessão gráfica compatível
+- os binários pré-compilados cobrem `linux-x86_64`, `macos-arm64` e `macos-x86_64`
+- o binário facilita a distribuição, mas não remove exigências do sistema operacional
+
+## Instalação sem clone, com Python
 
 ### Opção recomendada: `uv tool`
 
 Instala o comando globalmente, isolado, direto de uma tag do GitHub:
 
 ```bash
-uv tool install git+https://github.com/nitoba/keep-alive.git@v0.3.0
+uv tool install git+https://github.com/nitoba/keep-alive.git@v0.4.0
 ```
 
 Depois disso:
@@ -24,19 +70,19 @@ keep-alive install --cron comercial
 Para atualizar para outra tag:
 
 ```bash
-uv tool install --force git+https://github.com/nitoba/keep-alive.git@v0.3.1
+uv tool install --force git+https://github.com/nitoba/keep-alive.git@v0.4.1
 ```
 
 ### Opção alternativa: `pipx`
 
 ```bash
-pipx install git+https://github.com/nitoba/keep-alive.git@v0.3.0
+pipx install git+https://github.com/nitoba/keep-alive.git@v0.4.0
 ```
 
 ### Se quiser rodar sem instalar globalmente
 
 ```bash
-uvx --from git+https://github.com/nitoba/keep-alive.git@v0.3.0 keep-alive --help
+uvx --from git+https://github.com/nitoba/keep-alive.git@v0.4.0 keep-alive --help
 ```
 
 ## Fluxo de release por tag
@@ -44,11 +90,18 @@ uvx --from git+https://github.com/nitoba/keep-alive.git@v0.3.0 keep-alive --help
 Para distribuir uma nova versão:
 
 ```bash
-git tag v0.3.1
-git push origin v0.3.1
+git push origin main
+git tag v0.4.0
+git push origin v0.4.0
 ```
 
-Distribua sempre por tag, não pela branch `main`.
+Depois do push da tag:
+
+- o GitHub Actions gera os binários `keep-alive-linux-x86_64`, `keep-alive-macos-arm64` e `keep-alive-macos-x86_64`
+- o workflow cria ou atualiza o GitHub Release
+- o Release publica também o `install.sh`
+
+Distribua sempre por tag ou por Release, não pela branch `main`.
 
 ## Desenvolvimento local
 

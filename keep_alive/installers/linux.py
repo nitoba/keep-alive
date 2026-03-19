@@ -8,6 +8,7 @@ from keep_alive.paths import PROJECT_DIR
 from keep_alive.runtime import (
     build_module_command,
     build_shared_cli_args,
+    command_hint,
     format_command,
     get_display_env,
     get_xdg_session,
@@ -81,7 +82,7 @@ def install(args) -> bool:
     print(f"   systemctl --user stop {SERVICE_NAME}      # parar")
     print(f"   systemctl --user restart {SERVICE_NAME}   # reiniciar")
     print(f"   journalctl --user -u {SERVICE_NAME} -f    # ver logs do systemd")
-    print("   python -m keep_alive logs -f              # ver logs do app")
+    print(f"   {command_hint()} logs -f                  # ver logs do app")
     return True
 
 

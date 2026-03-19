@@ -1,7 +1,7 @@
 import subprocess
 
 from keep_alive.config import SERVICE_NAME
-from keep_alive.runtime import build_module_command, build_shared_cli_args
+from keep_alive.runtime import build_module_command, build_shared_cli_args, command_hint
 
 
 def build_task_command(args) -> str:
@@ -49,7 +49,7 @@ def install(args) -> bool:
     print(f"   schtasks /Query /TN {SERVICE_NAME}          # ver status")
     print(f"   schtasks /End /TN {SERVICE_NAME}            # parar")
     print(f"   schtasks /Run /TN {SERVICE_NAME}            # iniciar")
-    print("   python -m keep_alive logs -f                # ver logs")
+    print(f"   {command_hint()} logs -f                    # ver logs")
     return True
 
 
