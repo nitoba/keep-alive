@@ -1,6 +1,6 @@
 [project]
 name = "discord-always-online"
-version = "0.4.0"
+version = "0.4.1"
 description = "Mantém status online no Discord simulando atividade do usuário no SO"
 readme = "README.md"
 requires-python = ">=3.10"

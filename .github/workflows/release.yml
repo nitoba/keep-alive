@@ -18,7 +18,7 @@ jobs:
         include:
           - os: ubuntu-latest
             asset: keep-alive-linux-x86_64
-          - os: macos-13
+          - os: macos-15-intel
             asset: keep-alive-macos-x86_64
           - os: macos-14
             asset: keep-alive-macos-arm64

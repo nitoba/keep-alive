@@ -17,7 +17,7 @@ curl -fsSL https://github.com/nitoba/keep-alive/releases/latest/download/install
 Se quiser instalar uma versão específica:
 
 ```bash
-curl -fsSL https://github.com/nitoba/keep-alive/releases/latest/download/install.sh | KEEP_ALIVE_VERSION=v0.4.0 bash
+curl -fsSL https://github.com/nitoba/keep-alive/releases/latest/download/install.sh | KEEP_ALIVE_VERSION=v0.4.1 bash
 ```
 
 Depois disso:
@@ -57,7 +57,7 @@ Limitações importantes:
 Instala o comando globalmente, isolado, direto de uma tag do GitHub:
 
 ```bash
-uv tool install git+https://github.com/nitoba/keep-alive.git@v0.4.0
+uv tool install git+https://github.com/nitoba/keep-alive.git@v0.4.1
 ```
 
 Depois disso:
@@ -82,7 +82,7 @@ pipx install git+https://github.com/nitoba/keep-alive.git@v0.4.0
 ### Se quiser rodar sem instalar globalmente
 
 ```bash
-uvx --from git+https://github.com/nitoba/keep-alive.git@v0.4.0 keep-alive --help
+uvx --from git+https://github.com/nitoba/keep-alive.git@v0.4.1 keep-alive --help
 ```
 
 ## Fluxo de release por tag
@@ -91,8 +91,8 @@ Para distribuir uma nova versão:
 
 ```bash
 git push origin main
-git tag v0.4.0
-git push origin v0.4.0
+git tag v0.4.1
+git push origin v0.4.1
 ```
 
 Depois do push da tag:
