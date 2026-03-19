@@ -2,7 +2,55 @@
 
 Mantém seu status no Discord como online simulando microatividade de mouse e teclado no sistema operacional. Pode rodar em foreground, background e com autostart no sistema.
 
-## Setup
+## Instalação sem clone
+
+Você não precisa clonar o repositório.
+
+### Opção recomendada: `uv tool`
+
+Instala o comando globalmente, isolado, direto de uma tag do GitHub:
+
+```bash
+uv tool install git+https://github.com/nitoba/keep-alive.git@v0.3.0
+```
+
+Depois disso:
+
+```bash
+keep-alive --help
+keep-alive install --cron comercial
+```
+
+Para atualizar para outra tag:
+
+```bash
+uv tool install --force git+https://github.com/nitoba/keep-alive.git@v0.3.1
+```
+
+### Opção alternativa: `pipx`
+
+```bash
+pipx install git+https://github.com/nitoba/keep-alive.git@v0.3.0
+```
+
+### Se quiser rodar sem instalar globalmente
+
+```bash
+uvx --from git+https://github.com/nitoba/keep-alive.git@v0.3.0 keep-alive --help
+```
+
+## Fluxo de release por tag
+
+Para distribuir uma nova versão:
+
+```bash
+git tag v0.3.1
+git push origin v0.3.1
+```
+
+Distribua sempre por tag, não pela branch `main`.
+
+## Desenvolvimento local
 
 ```bash
 cd keep-alive
@@ -18,24 +66,32 @@ uv pip install -e .
 
 ```bash
 # Instalar como serviço do sistema
-python -m keep_alive install --cron comercial
+keep-alive install --cron comercial
 
 # Ou iniciar manualmente em background
-python -m keep_alive start --cron comercial
+keep-alive start --cron comercial
 
 # Ver status, logs e parar
+keep-alive status
+keep-alive logs -f
+keep-alive stop
+
+# Remover do autostart
+keep-alive uninstall
+```
+
+As formas abaixo continuam válidas se você estiver no ambiente Python do projeto:
+
+```bash
+python -m keep_alive install --cron comercial
+
+python -m keep_alive start --cron comercial
+
 python -m keep_alive status
 python -m keep_alive logs -f
 python -m keep_alive stop
 
-# Remover do autostart
 python -m keep_alive uninstall
-```
-
-Depois de instalar o projeto com `uv pip install -e .`, você também pode usar o script:
-
-```bash
-keep-alive start --cron comercial
 ```
 
 ## Subcomandos
